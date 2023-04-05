@@ -76,6 +76,50 @@ panel_botones.pack()
 
 ############################################
 
+#listas de productos
+lista_comidas = ['pollo', 'cordero', 'salmon', 'merlusa', 'kebad', 'pizza1', 'pizza2', 'pizza3']
+lista_bebidas = ['agua1', 'soda', 'vino1', 'vino2', 'vino3', 'vino4', 'vino5', 'vino6']
+lista_postres = ['helado', 'frutas', 'flan', 'gelatina', 'mush', 'pastel1', 'pastel2', 'pastel3']
+
+#generar item comida
+variables_comida = []
+contador = 0
+
+for comida in lista_comidas:
+    variables_comida.append('')
+    variables_comida[contador] = IntVar()
+    comida = Checkbutton(panel_comida, text=comida.title(), font=('Dosis', 19, 'bold'),
+                         onvalue=1, offvalue=0, variable=variables_comida[contador])
+    comida.grid(row=contador, column=0, sticky=W)
+    contador += 1
+
+#generar item comida
+variables_bebida = []
+contador = 0
+
+for bebida in lista_bebidas:
+    variables_bebida.append('')
+    variables_bebida[contador] = IntVar()
+    bebida = Checkbutton(panel_bebida, text=bebida.title(), font=('Dosis', 19, 'bold'),
+                         onvalue=1, offvalue=0, variable=variables_bebida[contador])
+    bebida.grid(row=contador, column=0, sticky=W)
+    contador += 1
+
+#generar item postre
+variables_postre = []
+contador = 0
+
+for postre in lista_postres:
+    variables_postre.append('')
+    variables_postre[contador] = IntVar()
+    postre = Checkbutton(panel_postres, text=postre.title(), font=('Dosis', 19, 'bold'),
+                         onvalue=1, offvalue=0, variable=variables_postre[contador])
+    postre.grid(row=contador, column=0, sticky=W)
+    contador += 1
+
+
+
+
 #evitar que la pantalla se cierre
 aplicacion.mainloop()
 
