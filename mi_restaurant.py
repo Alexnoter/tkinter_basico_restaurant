@@ -83,38 +83,111 @@ lista_postres = ['helado', 'frutas', 'flan', 'gelatina', 'mush', 'pastel1', 'pas
 
 #generar item comida
 variables_comida = []
+
+cuadros_comida = []
+texto_comida = []
+
 contador = 0
 
 for comida in lista_comidas:
+
+    #crear los checkbutton
     variables_comida.append('')
     variables_comida[contador] = IntVar()
-    comida = Checkbutton(panel_comida, text=comida.title(), font=('Dosis', 19, 'bold'),
-                         onvalue=1, offvalue=0, variable=variables_comida[contador])
-    comida.grid(row=contador, column=0, sticky=W)
+    comida = Checkbutton(panel_comida,
+                         text=comida.title(),
+                         font=('Dosis', 19, 'bold'),
+                         onvalue=1,
+                         offvalue=0,
+                         variable=variables_comida[contador])
+    comida.grid(row=contador,
+                column=0,
+                sticky=W)
+
+
+    #crear los cuadros de entrada
+    cuadros_comida.append('')
+    texto_comida.append('')
+    cuadros_comida[contador] = Entry(panel_comida,
+                                     font=('Dosis', 18, 'bold'),
+                                     bd=1,
+                                     width=6,
+                                     state=DISABLED,
+                                     textvariable=texto_comida[contador])
+    cuadros_comida[contador].grid(row=contador,
+                                  column=1)
+
+
     contador += 1
 
-#generar item comida
+#generar item bebida
 variables_bebida = []
 contador = 0
+cuadros_bebida = []
+texto_bebida = []
 
 for bebida in lista_bebidas:
+
+    # crear los checkbutton
     variables_bebida.append('')
     variables_bebida[contador] = IntVar()
-    bebida = Checkbutton(panel_bebida, text=bebida.title(), font=('Dosis', 19, 'bold'),
-                         onvalue=1, offvalue=0, variable=variables_bebida[contador])
-    bebida.grid(row=contador, column=0, sticky=W)
+    bebida = Checkbutton(panel_bebida,
+                         text=bebida.title(),
+                         font=('Dosis', 19, 'bold'),
+                         onvalue=1,
+                         offvalue=0,
+                         variable=variables_bebida[contador])
+    bebida.grid(row=contador,
+                column=0,
+                sticky=W)
+
+    # crear los cuadros de entrada
+    cuadros_bebida.append('')
+    texto_bebida.append('')
+    cuadros_bebida[contador] = Entry(panel_bebida,
+                                     font=('Dosis', 18, 'bold'),
+                                     bd=1,
+                                     width=6,
+                                     state=DISABLED,
+                                     textvariable=texto_bebida[contador])
+    cuadros_bebida[contador].grid(row=contador,
+                                  column=1)
+
     contador += 1
+
+
 
 #generar item postre
 variables_postre = []
 contador = 0
+cuadros_postre = []
+texto_postre = []
 
 for postre in lista_postres:
     variables_postre.append('')
     variables_postre[contador] = IntVar()
-    postre = Checkbutton(panel_postres, text=postre.title(), font=('Dosis', 19, 'bold'),
-                         onvalue=1, offvalue=0, variable=variables_postre[contador])
-    postre.grid(row=contador, column=0, sticky=W)
+    postre = Checkbutton(panel_postres, text=postre.title(),
+                         font=('Dosis', 19, 'bold'),
+                         onvalue=1,
+                         offvalue=0,
+                         variable=variables_postre[contador])
+    postre.grid(row=contador,
+                column=0,
+                sticky=W)
+
+
+
+    # crear los cuadros de entrada
+    cuadros_postre.append('')
+    texto_postre.append('')
+    cuadros_postre[contador] = Entry(panel_postres,
+                                     font=('Dosis', 18, 'bold'),
+                                     bd=1,
+                                     width=6,
+                                     state=DISABLED,
+                                     textvariable=texto_postre[contador])
+    cuadros_postre[contador].grid(row=contador,
+                                  column=1)
     contador += 1
 
 
