@@ -4,6 +4,11 @@ from tkinter import *
 
 operador = ''
 
+precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2.65]
+precios_bebida = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
+precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
+
+
 def click_boton(numero):
     global operador
     operador = operador + numero
@@ -78,6 +83,42 @@ def revisar_check():
 
 
 
+def total():
+    sub_total_comida = 0
+    p = 0
+    for cantidad in texto_comida:
+        sub_total_comida = sub_total_comida + (float(cantidad.get()) * precios_comida[p])
+        p += 1
+
+
+    sub_total_bebida = 0
+    p = 0
+    for cantidad in texto_bebida:
+        sub_total_bebida = sub_total_bebida + (float(cantidad.get()) * precios_bebida[p])
+        p += 1
+
+
+    sub_total_postres = 0
+    p = 0
+    for cantidad in texto_postre:
+        sub_total_postres = sub_total_postres + (float(cantidad.get()) * precios_postres[p])
+        p += 1
+
+
+    sub_total = sub_total_comida + sub_total_bebida + sub_total_postres
+    impuestos = sub_total * 0.07
+    total = sub_total + impuestos
+
+
+    var_costo_comida.set(f'$ {round(sub_total_comida, 2)}')
+    var_costo_bebida.set(f'$ {round(sub_total_bebida, 2)}')
+    var_costo_postre.set(f'$ {round(sub_total_postres, 2)}')
+    var_subtotal.set(f'$ {round(sub_total, 2)}')
+    var_impuestos.set(f'$ {round(impuestos, 2)}')
+    var_total.set(f'$ {round(total, 2)}')
+
+
+#############################################################################
 
 #iniciar ventana tkinter
 aplicacion = Tk()
@@ -417,9 +458,12 @@ texto_total.grid(row=2, column=3, padx=41)
 
 ####################################################################
 
+#no se puede crear command dentro del loop
+
 #panel de botones
 #botones
 botones = ['total', 'recibo', 'guardar', 'resetear']
+botones_creados = []
 columnas = 0
 
 for boton in botones:
@@ -431,9 +475,13 @@ for boton in botones:
                    bd=1,
                    width=7)
 
+    botones_creados.append(boton)
+
     boton.grid(row=0,
                column=columnas)
     columnas += 1
+
+botones_creados[0].config(command=total)
 
 
 
