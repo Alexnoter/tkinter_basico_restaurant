@@ -362,6 +362,46 @@ texto_recibo.grid(row=0,
                   column=0)
 
 
+#calculadora
+visor_calculadora = Entry(panel_calculadora,
+                          font=('Dosis', 16, 'bold'),
+                          width=33,
+                          bd=1)
+visor_calculadora.grid(row=0,
+                       column=0,
+                       columnspan=4)    #ampliacion de la columna
+
+botones_calculadora = ['7', '8', '9', '+',
+                       '4', '5', '6', '-',
+                       '1', '2', '3', 'x',
+                       'R', 'B', '0', '/']
+
+fila = 1
+columna = 0
+
+#agregamos todos los botones
+for boton in botones_calculadora:
+    boton = Button(panel_calculadora,
+                   text=boton.title(),
+                   font=('Dosis', 16, 'bold'),
+                   fg='white',
+                   bg='azure4',
+                   bd=1,
+                   width=7)
+
+    boton.grid(row=fila,
+               column=columna)
+
+    #para que recora las columnas y filas
+    if columna == 3:
+        fila += 1
+
+    columna += 1
+
+    if columna == 4:
+        columna = 0
+
+
 
 #######################################################################
 
