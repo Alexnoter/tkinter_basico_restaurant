@@ -1,5 +1,36 @@
 from tkinter import *
 
+
+
+operador = ''
+
+def click_boton(numero):
+    global operador
+    operador = operador + numero
+    #con es elimina lo que ahiga en el viso
+    visor_calculadora.delete(0, END)
+    #con esto muestro en el visor los datos al presionar la calculadora
+    visor_calculadora.insert(END, operador)
+
+
+def borrar():
+    #de esta manera reseteamos el operador y lo dejamos vacio
+    global operador
+    operador = ''
+    #esto elimina pero no resetea el operador
+    visor_calculadora.delete(0, END)
+
+
+def obtener_resultado():
+    global operador
+    #eval evalua si hay una operacion matematica y la resuelve pero devuelve un int ,
+    # lo transformamos a str para poder mostrarlo en visor
+    resultado = str(eval(operador))
+    visor_calculadora.delete(0, END)
+    visor_calculadora.insert(0, resultado)
+    operador = ''
+
+
 #iniciar ventana tkinter
 aplicacion = Tk()
 
@@ -376,6 +407,9 @@ botones_calculadora = ['7', '8', '9', '+',
                        '1', '2', '3', 'x',
                        'R', 'B', '0', '/']
 
+botones_guardados = []
+
+
 fila = 1
 columna = 0
 
@@ -389,6 +423,9 @@ for boton in botones_calculadora:
                    bd=1,
                    width=7)
 
+    botones_guardados.append(boton)
+
+
     boton.grid(row=fila,
                column=columna)
 
@@ -400,6 +437,25 @@ for boton in botones_calculadora:
 
     if columna == 4:
         columna = 0
+
+
+botones_guardados[0].config(command=lambda : click_boton('7'))
+botones_guardados[1].config(command=lambda : click_boton('8'))
+botones_guardados[2].config(command=lambda : click_boton('9'))
+botones_guardados[3].config(command=lambda : click_boton('+'))
+botones_guardados[4].config(command=lambda : click_boton('4'))
+botones_guardados[5].config(command=lambda : click_boton('5'))
+botones_guardados[6].config(command=lambda : click_boton('6'))
+botones_guardados[7].config(command=lambda : click_boton('-'))
+botones_guardados[8].config(command=lambda : click_boton('1'))
+botones_guardados[9].config(command=lambda : click_boton('2'))
+botones_guardados[10].config(command=lambda : click_boton('3'))
+botones_guardados[11].config(command=lambda : click_boton('*'))
+botones_guardados[12].config(command=obtener_resultado)
+botones_guardados[13].config(command=borrar)
+botones_guardados[14].config(command=lambda : click_boton('0'))
+botones_guardados[15].config(command=lambda : click_boton('/'))
+
 
 
 
