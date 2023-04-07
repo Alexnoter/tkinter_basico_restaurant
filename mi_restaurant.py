@@ -1,5 +1,8 @@
 from tkinter import *
 
+import  random
+import datetime
+
 
 
 operador = ''
@@ -116,6 +119,63 @@ def total():
     var_subtotal.set(f'$ {round(sub_total, 2)}')
     var_impuestos.set(f'$ {round(impuestos, 2)}')
     var_total.set(f'$ {round(total, 2)}')
+
+
+
+def recibo():
+    #datos del recibo
+    texto_recibo.delete(1.0, END)
+    num_recibo = f'N# - {random.randint(1000, 9999)}'
+    fecha = datetime.datetime.now()
+    fecha_recibo = f'{fecha.day}/{fecha.month}/{fecha.year} - {fecha.hour}:{fecha.minute}'
+    texto_recibo.insert(END, f'Datos:\t{num_recibo}\t\t{fecha_recibo}\n')
+    texto_recibo.insert(END, f'*' * 62 + '\n')
+    texto_recibo.insert(END, 'Items\t\tCant.\tCosto Items\n')
+    texto_recibo.insert(END, f'-' * 74 + '\n')
+
+
+    #mostrar los productos en el recibo
+    x = 0
+    for comida in texto_comida:
+        if comida.get() != '0':
+            texto_recibo.insert(END,
+                                f'{lista_comidas[x]}\t\t{comida.get()}\t'
+                                f'$ {int(comida.get()) * precios_comida[x]}\n')
+        x += 1
+
+    x = 0
+    for bebida in texto_bebida:
+        if bebida.get() != '0':
+            texto_recibo.insert(END,
+                                f'{lista_bebidas[x]}\t\t{bebida.get()}\t'
+                                f'$ {int(bebida.get()) * precios_bebida[x]}\n')
+        x += 1
+
+    x = 0
+    for postre in texto_postre:
+        if postre.get() != '0':
+            texto_recibo.insert(END,
+                                f'{lista_postres[x]}\t\t{postre.get()}\t'
+                                f'$ {int(postre.get()) * precios_postres[x]}\n')
+        x += 1
+
+    #costo de cada categoria
+    texto_recibo.insert(END, f'-' * 74 + '\n')
+    texto_recibo.insert(END, f'Costo de la comida: \t\t\t{var_costo_comida.get()}\n')
+    texto_recibo.insert(END, f'Costo de la bebida: \t\t\t{var_costo_bebida.get()}\n')
+    texto_recibo.insert(END, f'Costo de la postre: \t\t\t{var_costo_postre.get()}\n')
+
+    texto_recibo.insert(END, f'-' * 74 + '\n')
+    texto_recibo.insert(END, f'Sub-total: \t\t\t{var_subtotal.get()}\n')
+    texto_recibo.insert(END, f'Impuestos: \t\t\t{var_impuestos.get()}\n')
+    texto_recibo.insert(END, f'Total: \t\t\t{var_total.get()}\n')
+
+    texto_recibo.insert(END, f'*' * 62 + '\n')
+    texto_recibo.insert(END, 'Lo esperamos pronto')
+
+
+
+
 
 
 #############################################################################
@@ -482,6 +542,7 @@ for boton in botones:
     columnas += 1
 
 botones_creados[0].config(command=total)
+botones_creados[1].config(command=recibo)
 
 
 
