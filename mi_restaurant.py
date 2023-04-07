@@ -36,7 +36,7 @@ panel_izquierdo.pack(side=LEFT)
 ####
 
 #panel costos
-panel_costos = Frame(panel_izquierdo, bd=1, relief=FLAT)
+panel_costos = Frame(panel_izquierdo, bd=1, relief=FLAT, bg='azure4', padx=40)
 panel_costos.pack(side=BOTTOM)
 
 #panel comida
@@ -198,6 +198,139 @@ for postre in lista_postres:
 
 
 
+#################################################################
+
+#variables
+var_costo_comida = StringVar()
+var_costo_bebida = StringVar()
+var_costo_postre = StringVar()
+var_subtotal = StringVar()
+var_impuestos = StringVar()
+var_total = StringVar()
+
+
+#etiquetas de costos comida y campos de entradas
+etiqueta_costo_comida = Label(panel_costos,
+                              text='Costo Comida',
+                              font=('Dosis', 12, 'bold'),
+                              bg='azure4',
+                              fg='white')
+
+etiqueta_costo_comida.grid(row=0, column=0)
+
+
+texto_costo_comida = Entry(panel_costos,
+                           font=('Dosis', 12, 'bold'),
+                           bd=1,
+                           width=10,
+                           state='readonly', #esto dice que solo se podra leer
+                           textvariable=var_costo_comida)
+
+texto_costo_comida.grid(row=0, column=1, padx=41) #ese pad es el pading
+
+
+#etiquetas de costos bebida y campos de entradas
+etiqueta_costo_bebida = Label(panel_costos,
+                              text='Costo bebida',
+                              font=('Dosis', 12, 'bold'),
+                              bg='azure4',
+                              fg='white')
+
+etiqueta_costo_bebida.grid(row=1, column=0)
+
+
+texto_costo_bebida = Entry(panel_costos,
+                           font=('Dosis', 12, 'bold'),
+                           bd=1,
+                           width=10,
+                           state='readonly', #esto dice que solo se podra leer
+                           textvariable=var_costo_bebida)
+
+texto_costo_bebida.grid(row=1, column=1, padx=41)
+
+
+#etiquetas de costos postre y campos de entradas
+etiqueta_costo_postre = Label(panel_costos,
+                              text='Costo postre',
+                              font=('Dosis', 12, 'bold'),
+                              bg='azure4',
+                              fg='white')
+
+etiqueta_costo_postre.grid(row=2, column=0)
+
+
+texto_costo_postre = Entry(panel_costos,
+                           font=('Dosis', 12, 'bold'),
+                           bd=1,
+                           width=10,
+                           state='readonly', #esto dice que solo se podra leer
+                           textvariable=var_costo_postre)
+
+texto_costo_postre.grid(row=2, column=1, padx=41)
+
+
+#etiquetas de subtotal y campos de entradas
+etiqueta_subtotal = Label(panel_costos,
+                              text='Subtotal',
+                              font=('Dosis', 12, 'bold'),
+                              bg='azure4',
+                              fg='white')
+
+etiqueta_subtotal.grid(row=0, column=2)
+
+
+texto_subtotal = Entry(panel_costos,
+                           font=('Dosis', 12, 'bold'),
+                           bd=1,
+                           width=10,
+                           state='readonly', #esto dice que solo se podra leer
+                           textvariable=var_subtotal)
+
+texto_subtotal.grid(row=0, column=3, padx=41)
+
+
+#etiquetas de impuesto y campos de entradas
+etiqueta_impuestos = Label(panel_costos,
+                              text='Impuestos',
+                              font=('Dosis', 12, 'bold'),
+                              bg='azure4',
+                              fg='white')
+
+etiqueta_impuestos.grid(row=1, column=2)
+
+
+texto_impuestos = Entry(panel_costos,
+                           font=('Dosis', 12, 'bold'),
+                           bd=1,
+                           width=10,
+                           state='readonly', #esto dice que solo se podra leer
+                           textvariable=var_impuestos)
+
+texto_impuestos.grid(row=1, column=3, padx=41)
+
+
+
+#etiquetas de total y campos de entradas
+etiqueta_total = Label(panel_costos,
+                              text='Total',
+                              font=('Dosis', 12, 'bold'),
+                              bg='azure4',
+                              fg='white')
+
+etiqueta_total.grid(row=2, column=2)
+
+
+texto_total = Entry(panel_costos,
+                           font=('Dosis', 12, 'bold'),
+                           bd=1,
+                           width=10,
+                           state='readonly', #esto dice que solo se podra leer
+                           textvariable=var_total)
+
+texto_total.grid(row=2, column=3, padx=41)
+
+
+####################################################################
 
 #evitar que la pantalla se cierre
 aplicacion.mainloop()
