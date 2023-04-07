@@ -36,7 +36,8 @@ def revisar_check():
     for c in cuadros_comida:
         if variables_comida[x].get() == 1:
             cuadros_comida[x].config(state=NORMAL)
-            cuadros_comida[x].delete(0, END)
+            if cuadros_comida[x].get() == '0':
+                cuadros_comida[x].delete(0, END)
             cuadros_comida[x].focus()
 
         else:
@@ -50,7 +51,8 @@ def revisar_check():
     for c in cuadros_bebida:
         if variables_bebida[x].get() == 1:
             cuadros_bebida[x].config(state=NORMAL)
-            cuadros_bebida[x].delete(0, END)
+            if cuadros_bebida[x].get() == '0':
+                cuadros_bebida[x].delete(0, END)
             cuadros_bebida[x].focus()
 
         else:
@@ -64,7 +66,8 @@ def revisar_check():
     for c in cuadros_postre:
         if variables_postre[x].get() == 1:
             cuadros_postre[x].config(state=NORMAL)
-            cuadros_postre[x].delete(0, END)
+            if cuadros_postre[x].get() == '0':
+                cuadros_postre[x].delete(0, END)
             cuadros_postre[x].focus()
 
         else:
