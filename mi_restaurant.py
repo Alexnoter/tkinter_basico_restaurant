@@ -185,6 +185,46 @@ def guardar():
     messagebox.showinfo('Informacion ', 'su recibo a sido guardado')
 
 
+
+def resetear():
+    #elimina lo de la pantalla
+    texto_recibo.delete(0.1, END)
+
+    #cambia las cantidades de los productos a 0
+    for texto in texto_comida:
+        texto.set('0')
+    for texto in texto_bebida:
+        texto.set('0')
+    for texto in texto_postre:
+        texto.set('0')
+
+    #descatica las casillas de lo chekc
+    for cuadro in cuadros_comida:
+        cuadro.config(state=DISABLED)
+    for cuadro in cuadros_bebida:
+        cuadro.config(state=DISABLED)
+    for cuadro in cuadros_postre:
+        cuadro.config(state=DISABLED)
+
+    #desactivamos los checkbutton
+    for v in variables_comida:
+        v.set(0)
+    for v in variables_bebida:
+        v.set(0)
+    for v in variables_postre:
+        v.set(0)
+
+
+    #borrar los cuadros especificos de sub total , total etc
+    var_costo_comida.set('')
+    var_costo_bebida.set('')
+    var_costo_postre.set('')
+    var_subtotal.set('')
+    var_impuestos.set('')
+    var_total.set('')
+
+
+
 #############################################################################
 
 #iniciar ventana tkinter
@@ -551,6 +591,7 @@ for boton in botones:
 botones_creados[0].config(command=total)
 botones_creados[1].config(command=recibo)
 botones_creados[2].config(command=guardar)
+botones_creados[3].config(command=resetear)
 
 
 
